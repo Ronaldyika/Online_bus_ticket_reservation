@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <a style="margin-right: 10px;" class="btn btn-primary mt-5" href="{% url 'index' %}">Back</a>
+    <div class="container mt-5">
+        <h3>Title: {{blog_content.title}}</h3>
+        <img class="img-thumbnail" src="{{blog_content.image.url}}"/>
+        <p>{{blog_content.content|linebreaks}}</p>
+    </div>
+    
+
+  {% endblock %}

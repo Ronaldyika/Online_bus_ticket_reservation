@@ -1,0 +1,68 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Button trigger modal -->
+{% comment %} <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#staticBackdrop"> {% endcomment %}
+  {% comment %} Launch static backdrop modal {% endcomment %}
+{% comment %} </button> {% endcomment %}
+
+<!-- Modal -->
+{% comment %} <div class="modal fade" id="staticBackdrop" data-backdrop="false" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> {% endcomment %}
+  {% comment %} <div class="modal-dialog"> {% endcomment %}
+    {% comment %} <div class="modal-content"> {% endcomment %}
+      {% comment %} <div class="modal-header"> {% endcomment %}
+        {% comment %} <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> {% endcomment %}
+        {% comment %} <button type="button" class="close" data-dismiss="modal" aria-label="Close"> {% endcomment %}
+          {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+        {% comment %} </button> {% endcomment %}
+      {% comment %} </div> {% endcomment %}
+      {% comment %} <div class="modal-body"> {% endcomment %}
+        {% comment %} ... {% endcomment %}
+      {% comment %} </div> {% endcomment %}
+      {% comment %} <div class="modal-footer"> {% endcomment %}
+        {% comment %} <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> {% endcomment %}
+        {% comment %} <button type="button" class="btn btn-primary">Understood</button> {% endcomment %}
+      {% comment %} </div> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
+  {% comment %} </div> {% endcomment %}
+{% comment %} </div> {% endcomment %}
+{% comment %}  {% endcomment %}
+
+    <div style="margin-top:50px" class="container mt-5">
+        <center>
+            <div style="font-size: xx-large;" class="container text-5 text-primary mt-5">
+                All Blogs
+            </div>
+        </center>
+        <center>
+          <a class="btn btn-primary text-center mt-5" href="{% url 'create_blog' %}">Add Blog</a>
+        </center>
+        <div class="row smt-5">
+          <br><br>
+          {% for blog in blogs %}
+          <center>
+            <div class="mb-4 mx-4 mt-5">
+              <div class="card h-70">
+              <img height=280 class="card-img-top" src="{{blog.image.url}}" alt="Blog Post Image">
+              <div class="card-body">
+                <h4 class="card-title">{{blog.title}}</h4>
+                <p class="card-text">{{blog.content|slice:60}}</p>
+                <a href="#" class="btn btn-success">Read More</a>
+              </div>
+              <center>
+                <a class="btn btn-outline-primary" href="{% url 'blog_update' blog.pk %}">Update</a>
+                <a class="btn btn-outline-danger" href="{% url 'blog_delete' blog.pk %}">Delete</a>
+              </center> 
+            </div>
+          </div>
+        </center>
+
+          {% endfor %}
+        </div>
+        
+
+      </div>
+
+
+{% endblock %}

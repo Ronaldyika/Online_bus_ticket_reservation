@@ -1,0 +1,18 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+  <body>
+    <div class="container bg-light mt-5">
+      <form method = "POST">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <button class="btn btn-outline-primary mt-5" type="submit">Signup</button>
+    </div>
+
+  </form>
+
+  {% endblock %}
